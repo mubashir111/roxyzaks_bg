@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Booking Modal Logic ---
     const modal = document.getElementById('bookingModal');
     // Added .btn-navbar to selector
-    const bookBtns = document.querySelectorAll('.btn-book, .btn-peach, .btn-gold, .btn-navbar');
+    const bookBtns = document.querySelectorAll('.btn-book, .btn-peach, .btn-gold, .btn-navbar, .btn-pill');
     const closeBtn = document.querySelector('.close-modal');
     const bookingForm = document.getElementById('bookingForm');
 

@@ -18,90 +18,172 @@
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific Styles for Services Page */
+        /* Deep Maroon Theme Variables & Overrides */
+        :root {
+            --color-bg-primary: #2d0a0a;
+            /* Deep Maroon */
+            --color-bg-secondary: #3d0d0d;
+            --color-accent: #D4AF37;
+            /* Gold */
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            background-image: url('assets/images/services-bg.png');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* --- Services Hero --- */
         .services-hero {
-            padding: 180px 0 100px;
+            padding: 180px 0 60px;
             text-align: center;
-            /* Background handled in style.css */
         }
 
         .services-hero h1 {
-            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
             color: var(--color-accent);
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
         }
 
         .services-hero p {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             font-size: 1.2rem;
             color: var(--color-text-secondary);
+            line-height: 1.6;
         }
 
+        /* --- Service Cards --- */
         .service-detail-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-primary);
+            padding: 40px 0 100px;
         }
 
-        .service-row {
+        .service-card {
             display: flex;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 100px;
+            align-items: stretch;
+            /* Ensure full height stretch */
+            background: rgba(45, 10, 10, 0.85);
+            /* Semi-transparent maroon */
+            border: 1px solid var(--color-accent);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            height: 400px;
+            /* Fixed height for premium consistency */
         }
 
-        .service-row:nth-child(even) {
+        .service-card:nth-child(even) {
             flex-direction: row-reverse;
         }
 
-        .service-detail-content {
+        .service-card-content {
             flex: 1;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Center content vertically */
         }
 
-        .service-detail-content h3 {
-            font-size: 2.5rem;
-            color: var(--color-white);
-            margin-bottom: 20px;
-            position: relative;
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .service-detail-content p {
+        .service-card p {
             font-size: 1.1rem;
             color: var(--color-text-secondary);
-            line-height: 1.8;
             margin-bottom: 30px;
+            line-height: 1.7;
         }
 
-        .service-detail-image {
-            flex: 1;
-            height: 500px;
+        .service-card-image {
+            flex: 1.2;
+            /* Give image slightly more width for impact */
+            height: 100%;
+            overflow: hidden;
+            /* For zoom effect */
             position: relative;
         }
 
-        .service-detail-image img {
+        .service-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            /* Ultra smooth premium transition */
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+            transform-origin: center center;
+            filter: brightness(0.95);
+            /* Slight dim for mood */
         }
 
+        .service-card:hover .service-card-image img {
+            transform: scale(1.08);
+            /* Smoother, less aggressive zoom */
+            filter: brightness(1.1);
+            /* Brighten on hover for focus */
+        }
+
+        /* Pill Buttons */
+        .btn-pill {
+            display: inline-block;
+            background: var(--color-accent);
+            color: #000;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+            background: #fff;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
-
-            .service-row,
-            .service-row:nth-child(even) {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .service-detail-image {
-                width: 100%;
-                height: 300px;
-            }
-
             .services-hero h1 {
-                font-size: 3rem;
+                font-size: 2.2rem;
+            }
+
+            .service-card,
+            .service-card:nth-child(even) {
+                flex-direction: column-reverse;
+                /* Image on top */
+                height: auto;
+                /* Auto height for mobile */
+            }
+
+            .service-card-image {
+                flex: auto;
+                width: 100%;
+                height: 250px;
+                /* Fixed height for mobile image */
+            }
+
+            .service-card-content {
+                padding: 30px 20px;
+                text-align: center;
+                flex: auto;
             }
         }
     </style>
@@ -118,7 +200,7 @@
             <nav class="nav-center">
                 <ul class="nav-links">
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="services.html" class="active" style="color: var(--color-accent);">Services</a></li>
                     <li><a href="bridal.html">Bridal</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Branches</a>
@@ -128,6 +210,9 @@
                             <li><a href="arakkinar.html">Arakkinar</a></li>
                             <li><a href="kinasseri.html">Kinasseri</a></li>
                             <li><a href="azhichavattam.html">Azhichavattam</a></li>
+                            <li><a href="karaparamba.html">Karaparamba</a></li>
+                            <li><a href="narikkuni.html">Narikkuni</a></li>
+                            <li><a href="olavanna.html">Olavanna</a></li>
                         </ul>
                     </li>
                     <li><a href="index.html#testimonials">Testimonials</a></li>
@@ -144,78 +229,77 @@
     <!-- Services Hero -->
     <section class="services-hero fade-up">
         <div class="container">
-            <h1 class="walking-text">OUR SIGNATURE SERVICES</h1>
+            <h1 class="walking-text">EXPERIENCE OUR <br>SIGNATURE SERVICES</h1>
             <p>We offer a complete range of hair, beauty, grooming, spa, and wellness services under one roof for every
                 age, gender, and occasion.</p>
         </div>
     </section>
 
-    <!-- Services List -->
+    <!-- Services Cards List -->
     <section class="service-detail-section">
         <div class="container">
 
-            <!-- Hair Care & Styling -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
+            <!-- Card 1: Hair Care & Styling -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
                     <h3>HAIR CARE & STYLING</h3>
                     <p>Our expert stylists deliver precision haircuts, professional styling, and custom colour solutions
                         that suit your face shape, personality, and lifestyle.</p>
-                    <a href="#booking" class="btn btn-gold">Book Appointment</a>
+                    <a href="#booking" class="btn-pill">BOOK NOW</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
                     <img src="assets/images/service-hair.jpg" alt="Hair Care">
                 </div>
             </div>
 
-            <!-- Hair Treatments -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
+            <!-- Card 2: Hair Treatments -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
                     <h3>HAIR TREATMENTS</h3>
                     <p>Revive and repair your hair with advanced treatments designed to restore strength, shine, and
                         manageability.</p>
-                    <a href="#booking" class="btn btn-gold">Book Appointment</a>
+                    <a href="#booking" class="btn-pill">BOOK NOW</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
                     <img src="assets/images/service-body.jpg" alt="Hair Treatments">
-                    <!-- Reusing placeholder if needed, or specific one -->
                 </div>
             </div>
 
-            <!-- Beauty & Makeup -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
+            <!-- Card 3: Beauty & Makeup -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
                     <h3>BEAUTY & MAKEUP</h3>
                     <p>Enhance your natural beauty with professional makeup and skincare services tailored for every
                         occasion.</p>
-                    <a href="#booking" class="btn btn-gold">Book Appointment</a>
+                    <a href="#booking" class="btn-pill">BOOK NOW</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
                     <img src="assets/images/service-facial.jpg" alt="Beauty & Makeup">
                 </div>
             </div>
 
-            <!-- Spa & Wellness -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
+            <!-- Card 4: Spa & Wellness -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
                     <h3>SPA & WELLNESS</h3>
                     <p>Relax and recharge with our therapeutic spa services designed to relieve stress and rejuvenate
                         your body and mind.</p>
-                    <a href="#booking" class="btn btn-gold">Book Appointment</a>
+                    <a href="#booking" class="btn-pill">BOOK NOW</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
                     <img src="assets/images/service-nail.jpg" alt="Spa & Wellness">
                 </div>
             </div>
 
-            <!-- Grooming Services -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
+            <!-- Card 5: Grooming Services -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
                     <h3>GROOMING SERVICES</h3>
-                    <p>Our exceptional grooming services focus on clean, confident, and modern looks as the preference.
-                    </p>
-                    <a href="#booking" class="btn btn-gold">Book Appointment</a>
+                    <p>Our exceptional grooming services focus on clean, confident, and modern looks for the modern
+                        gentleman.</p>
+                    <a href="#booking" class="btn-pill">BOOK NOW</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
                     <img src="assets/images/hero-poster.jpg" alt="Grooming Services">
                 </div>
             </div>
@@ -240,6 +324,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="services.html">Our Services</a></li>
+                        <li><a href="bridal.html">Bridal</a></li>
                         <li><a href="index.html#locations">Locations</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
@@ -274,7 +359,7 @@
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2 class="modal-title">Book Your Experience</h2>
+            <h2 class="modal-title">Book your Experience</h2>
             <form id="bookingForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>

@@ -18,110 +18,223 @@
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Reusing Services Page Styles */
-        .services-hero {
-            padding: 180px 0 100px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a0404 0%, #0f0202 100%);
+        /* Deep Maroon Theme Variables & Overrides */
+        :root {
+            --color-bg-primary: #2d0a0a;
+            /* Deep Maroon */
+            --color-bg-secondary: #3d0d0d;
+            /* Slightly lighter maroon */
+            --color-accent: #D4AF37;
+            /* Gold */
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #e0e0e0;
         }
 
-        .services-hero h1 {
-            font-size: 4rem;
-            color: var(--color-accent);
-            margin-bottom: 20px;
-        }
-
-        .services-hero p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-        }
-
-        .service-detail-section {
-            padding: 80px 0;
+        body {
             background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            /* Optional: Add a pattern overlay if available, e.g. url('assets/images/services-bg.png') */
+            background-image: url('assets/images/services-bg.png');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-attachment: fixed;
         }
 
-        .service-row {
+        /* --- Hero Section (Split Layout) --- */
+        .bridal-hero {
+            padding: 160px 0 80px;
             display: flex;
             align-items: center;
-            gap: 60px;
-            margin-bottom: 100px;
-        }
-
-        .service-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .service-detail-content {
-            flex: 1;
-        }
-
-        .service-detail-content h3 {
-            font-size: 2.5rem;
-            color: var(--color-white);
-            margin-bottom: 20px;
+            min-height: 80vh;
             position: relative;
+            overflow: hidden;
         }
 
-        .service-detail-content p {
+        .bridal-hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bridal-hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .bridal-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--color-accent);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bridal-hero h1 span {
+            display: block;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        .bridal-hero p {
             font-size: 1.1rem;
             color: var(--color-text-secondary);
-            line-height: 1.8;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
 
-        .service-detail-image {
+        .bridal-hero-image {
             flex: 1;
-            height: 500px;
             position: relative;
         }
 
-        .service-detail-image img {
+        .bridal-hero-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            /* Minimal radius */
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
-        /* Intro Section Specific */
+        /* --- Intro Section --- */
         .bridal-intro {
-            padding: 80px 0 40px;
+            padding: 60px 0;
             text-align: center;
-            background-color: var(--color-bg-primary);
         }
 
         .bridal-intro h2 {
-            font-size: 2.5rem;
-            color: var(--color-white);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-accent);
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .bridal-intro p {
             max-width: 800px;
             margin: 0 auto;
             color: var(--color-text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
+        /* --- Service Cards Section --- */
+        .service-detail-section {
+            padding: 60px 0;
+        }
 
+        .service-card {
+            display: flex;
+            align-items: center;
+            background: rgba(45, 10, 10, 0.8);
+            /* Semi-transparent maroon */
+            border: 1px solid var(--color-accent);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            /* Keep height consistent if needed, but flex handles content */
+        }
+
+        .service-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .service-card-content {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-pill {
+            display: inline-block;
+            background: var(--color-accent);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            /* Pill shape */
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            background: #fff;
+        }
+
+        .service-card-image {
+            flex: 1;
+            height: 400px;
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Gallery Overlay Override --- */
+        .branch-media-section {
+            background-color: transparent !important;
+            padding-top: 40px;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
-
-            .service-row,
-            .service-row:nth-child(even) {
+            .bridal-hero .container {
+                flex-direction: column-reverse;
+                /* Text on top usually better, but design might prefer image top. Let's stack naturally text top */
                 flex-direction: column;
-                gap: 40px;
+                text-align: center;
             }
 
-            .service-detail-image {
+            .bridal-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .bridal-hero h1 span {
+                font-size: 1.5rem;
+            }
+
+            .service-card,
+            .service-card:nth-child(even) {
+                flex-direction: column-reverse;
+                /* Image on top */
+            }
+
+            .service-card-image {
                 width: 100%;
-                height: 300px;
+                height: 250px;
             }
 
-            .services-hero h1 {
-                font-size: 3rem;
+            .service-card-content {
+                padding: 30px 20px;
+                text-align: center;
             }
         }
     </style>
@@ -129,7 +242,7 @@
 
 <body>
 
-    <!-- Header -->
+    <!-- Header (Navbar remains untouched in structure, but colors might adapt via CSS variables over time) -->
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
@@ -148,6 +261,9 @@
                             <li><a href="arakkinar.html">Arakkinar</a></li>
                             <li><a href="kinasseri.html">Kinasseri</a></li>
                             <li><a href="azhichavattam.html">Azhichavattam</a></li>
+                            <li><a href="karaparamba.html">Karaparamba</a></li>
+                            <li><a href="narikkuni.html">Narikkuni</a></li>
+                            <li><a href="olavanna.html">Olavanna</a></li>
                         </ul>
                     </li>
                     <li><a href="index.html#testimonials">Testimonials</a></li>
@@ -161,83 +277,124 @@
         </div>
     </header>
 
-    <!-- Bridal Hero -->
-    <section class="services-hero fade-up">
+    <!-- Split Hero Section -->
+    <section class="bridal-hero fade-up">
         <div class="container">
-            <h1>ROXY ZAKS BRIDAL</h1>
-            <p>Your big day deserves nothing less than perfection. At Roxy Zaks, our bridal makeover services are
-                designed to enhance your natural beauty while reflecting your unique style.</p>
+            <div class="bridal-hero-content">
+                <h1>
+                    Roxy Zaks Bridal
+                    <span>Elevate Your Wedding Beauty</span>
+                </h1>
+                <p>Designed for the modern bride. We bring your dream look to life with bespoke artistry, premium care,
+                    and a touch of magic.</p>
+                <!-- <a href="#booking" class="btn btn-gold">Free Consultation</a> -->
+            </div>
+            <div class="bridal-hero-image">
+                <!-- Using one of the bridal images here -->
+                <img src="assets/images/bride/young-beautiful-stylish-woman-wedding-dress.webp" alt="Roxy Zaks Bride">
+            </div>
         </div>
     </section>
 
-    <!-- Intro / Philosophy -->
+    <!-- Graceful Intro -->
     <section class="bridal-intro fade-up">
         <div class="container">
-            <h2>A BEAUTY EXPERIENCE DESIGNED AROUND YOU</h2>
-            <p>Your wedding day is uniquely yours, and so is the beauty experience we create at Roxy Zaks. Our bridal
-                makeovers are thoughtfully tailored to your personal style. We blend artistry with technique, using
-                premium products and expert hands to ensure your bridal look is camera-ready, long-lasting, and
-                unforgettable.</p>
+            <h2>A Luxury Experience Designed For You</h2>
+            <p>We are not just about makeup; we are about the experience. From the first consultation to the final
+                touch-up, our team is dedicated to making you feel radiant, confident, and calm.</p>
         </div>
     </section>
 
-    <!-- Features / Services List -->
+    <!-- Services Cards -->
     <section class="service-detail-section">
         <div class="container">
 
-            <!-- Expert Personalization -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
-                    <h3>EXPERT PERSONALISAYION</h3>
-                    <p>Every Roxy Zaks bride receives a fully customized experience. From pre-bridal skin prep to final
-                        makeup touch, our artists design a look that reflects you - your face structure, tone, style,
-                        and vision.</p>
-                    <a href="#booking" class="btn btn-gold">Book Consultation</a>
+            <!-- Card 1: Expert Personalisation -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
+                    <div style="font-size: 3rem; color: var(--color-accent); margin-bottom: 20px;">
+                        <!-- Optional Icon/graphic could go here -->
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Expert Personalisation</h3>
+                    <p>Every face is unique. We customize your look based on your skin tone, facial features, and
+                        wedding theme. A truly bespoke experience awaits you.</p>
+                    <a href="#booking" class="btn-pill">View Class-Salon</a>
                 </div>
-                <div class="service-detail-image">
-                    <img src="assets/images/service-facial.jpg" alt="Expert Personalization">
+                <div class="service-card-image">
+                    <img src="assets/images/bride/young-beautiful-blonde-bride-wedding-dress-veil-smiling.webp"
+                        alt="Bridal Personalization">
                 </div>
             </div>
 
-            <!-- Professional, Certified Artists -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
-                    <h3>PROFESSIONAL, CERTIFIED ARTISTS</h3>
-                    <p>Our team includes experienced makeup artists, hairstylists, and skin specialists trained in
-                        bridal beauty, working seamlessly together to deliver long-lasting, high-definition results.</p>
-                    <a href="#booking" class="btn btn-gold">Meet Our Team</a>
+            <!-- Card 2: Professional Artists -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
+                    <h3>Professional Artists</h3>
+                    <p>Our team comprises certified senior artists with years of experience in high-fashion and bridal
+                        makeup. Trust your big day to the best hands in the industry.</p>
+                    <a href="#booking" class="btn-pill">Meet Our Team</a>
                 </div>
-                <div class="service-detail-image">
+                <div class="service-card-image">
+                    <!-- Standard salon image as placeholder if specific artist pic needed -->
                     <img src="assets/images/team.jpg" alt="Professional Artists">
                 </div>
             </div>
 
-            <!-- Premium Products -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
-                    <h3>PREMIUM, SKIN-LOVING PRODUCTS</h3>
-                    <p>We use only top-tier, professional-grade cosmetics and skincare, carefully chosen for longevity,
-                        comfort, and flawless finish across all skin types and tones.</p>
-                    <a href="#booking" class="btn btn-gold">Learn More</a>
+            <!-- Card 3: Premium Products -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
+                    <h3>Premium Products</h3>
+                    <p>We invest in luxury. Using only world-renowned brands ensures your makeup stays flawless,
+                        photo-ready, and comfortable all day (and night) long.</p>
+                    <a href="#booking" class="btn-pill">I Like Now</a>
                 </div>
-                <div class="service-detail-image">
-                    <img src="assets/images/service-body.jpg" alt="Premium Products">
-                </div>
-            </div>
-
-            <!-- Stress-free Experience -->
-            <div class="service-row fade-up">
-                <div class="service-detail-content">
-                    <h3>STRESS-FREE BRIDAL EXPERIENCE</h3>
-                    <p>We handle it all - timelines, trials, prep, and perfection, so you can simply relax, glow, and
-                        walk into your big day with confidence.</p>
-                    <a href="#booking" class="btn btn-gold">Start Your Journey</a>
-                </div>
-                <div class="service-detail-image">
-                    <img src="assets/images/hero-poster.jpg" alt="Stress-free Experience">
+                <div class="service-card-image">
+                    <img src="assets/images/service-facial.jpg" alt="Premium Products">
                 </div>
             </div>
 
+            <!-- Card 4: Stress-Free -->
+            <div class="service-card fade-up">
+                <div class="service-card-content">
+                    <h3>Stress-Free Experience</h3>
+                    <p>Sit back and relax. We manage the timeline and details so you can focus on making memories. Your
+                        peace of mind is our priority.</p>
+                    <a href="#booking" class="btn-pill">Make Appointment</a>
+                </div>
+                <div class="service-card-image">
+                    <img src="assets/images/service-hair.jpg" alt="Stress Free">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Real Brides Gallery -->
+    <section class="branch-media-section">
+        <div class="container fade-up">
+            <h2 class="section-title text-center"
+                style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: 20px;">Real Brides</h2>
+            <p class="section-desc text-center">Moments of pure joy and elegance, captured forever.</p>
+
+            <div class="branch-gallery-grid">
+                <div class="gallery-item"><img src="assets/images/bride/young-woman-wedding-dress-indoor.webp"
+                        alt="Real Bride 1"></div>
+                <div class="gallery-item"><img
+                        src="assets/images/bride/young-beautiful-stylish-woman-wedding-dress.webp" alt="Real Bride 2">
+                </div>
+                <div class="gallery-item"><img
+                        src="assets/images/bride/young-beautiful-blonde-bride-wedding-dress-veil-smiling.webp"
+                        alt="Real Bride 3"></div>
+                <div class="gallery-item"><img src="assets/images/bride/young-woman-wedding-dress-indoor.webp"
+                        alt="Real Bride 4"></div>
+                <div class="gallery-item"><img
+                        src="assets/images/bride/young-beautiful-stylish-woman-wedding-dress.webp" alt="Real Bride 5">
+                </div>
+                <div class="gallery-item"><img
+                        src="assets/images/bride/young-beautiful-blonde-bride-wedding-dress-veil-smiling.webp"
+                        alt="Real Bride 6"></div>
+            </div>
         </div>
     </section>
 
